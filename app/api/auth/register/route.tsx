@@ -4,7 +4,13 @@ import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 export async function POST(request) {
-    const { email, password } = await request.json();
+    const { email, password, confirmPassword, name } = await request.json();
+
+    if (password !== confirmPassword) {
+        return new Response(JSON.stringify({ error: 'Passwords do not match' }), {
+            status: 400,
+        });
+    }
 
     const existingUser = await prisma.user.findUnique({
         where: { email },
@@ -22,6 +28,7 @@ export async function POST(request) {
         data: {
             email,
             password: hashedPassword,
+            name,
         },
     });
 
