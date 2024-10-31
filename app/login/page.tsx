@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Facebook, X } from "lucide-react";
+import { Facebook, Twitter } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
