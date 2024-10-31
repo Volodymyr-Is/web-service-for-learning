@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Facebook, Twitter } from "lucide-react";
+import { Facebook, X } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -16,7 +16,9 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your login logic here
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("Remember me:", rememberMe);
   };
 
   return (

@@ -33,7 +33,8 @@ export default function RegisterPage() {
       setError('Passwords do not match')
       return
     }
-    // Add your registration logic here
+    console.log("Form data:", formData);
+    console.log("Remember me:", rememberMe);
   }
 
   return (
