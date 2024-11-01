@@ -38,10 +38,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className=" flex items-center justify-center  p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl text-center font-bold">Register Page</CardTitle>
+          <CardTitle className="text-2xl text-center font-bold">Sign Up</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -115,7 +115,7 @@ export default function RegisterPage() {
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
                   <span className="bg-background px-2 text-muted-foreground">
-                    or register via
+                    or sign up via
                   </span>
                 </div>
               </div>
@@ -145,7 +145,7 @@ export default function RegisterPage() {
               </div>
             </div>
             <Button type="submit" className="w-full">
-              Register
+              Sign Up
             </Button>
             <div className="text-center text-sm">
               Already have an account?{" "}

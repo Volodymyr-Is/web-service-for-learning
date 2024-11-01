@@ -22,11 +22,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className=" flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl text-center font-bold">
-            Login Page
+            Login
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -92,8 +92,9 @@ export default function LoginPage() {
                 </div>
               </div>
               <div className="flex gap-2 justify-center">
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <svg
+                <Link href="/login/google">
+                  <Button variant="outline" size="icon" className="rounded-full">
+                    <svg
                     className="h-5 w-5"
                     viewBox="0 0 24 24"
                     fill="currentColor"
@@ -106,6 +107,7 @@ export default function LoginPage() {
                   </svg>
                   <span className="sr-only">Google</span>
                 </Button>
+                </Link>
                 <Button variant="outline" size="icon" className="rounded-full">
                   <Facebook className="h-5 w-5" />
                   <span className="sr-only">Facebook</span>
