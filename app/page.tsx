@@ -1,19 +1,13 @@
-import { sql } from "@vercel/postgres";
 
-export default async function Cart({
-  params
-} : {
-  params: { user: string }
-}): Promise<JSX.Element> {
-  const { rows } = await sql`SELECT * from CARTS where user_id=${params.user}`;
-
+import { Jumbotron } from "@/components/jumbotron";
+export default function Home() {
   return (
-      <div>
-        {rows.map((row) => (
-            <div key={row.id}>
-              {row.id} - {row.quantity}
-            </div>
-        ))}
-      </div>
+    <div className="container">
+      <Jumbotron title="Welcome to Our Amazing App" description="Discover the power of innovation and creativity" buttonText="Get Started" buttonLink="/login" />
+     
+
+
+    </div>
+
   );
 }
