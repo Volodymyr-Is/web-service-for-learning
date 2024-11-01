@@ -25,10 +25,10 @@ export function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className="border-b">
+    <nav className="border-b bg-background sticky top-0 z-50">
       <div className="flex items-center justify-between mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16">
         <div className="flex items-center">
-          <Link href="/" className="text-xl font-bold">
+          <Link href="/" className="text-xl text-foreground font-bold">
             Logo
           </Link>
         </div>
