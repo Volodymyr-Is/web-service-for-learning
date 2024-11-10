@@ -8,9 +8,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { Book, Pencil, Users, Clock, Award } from 'lucide-react'
+import { Book, Users, Clock, Award } from 'lucide-react'
 
-// Mock data for demonstration
 const user = {
   name: "Jane Doe",
   email: "jane.doe@example.com",
