@@ -1,38 +1,50 @@
-import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcrypt';
+import { supabase } from "@/lib/supabaseClient";
 
-const prisma = new PrismaClient();
-
-export async function POST(request) {
+export async function POST(request: Request) {
     const { email, password, confirmPassword, name } = await request.json();
 
+    // Проверка совпадения паролей
     if (password !== confirmPassword) {
-        return new Response(JSON.stringify({ error: 'Passwords do not match' }), {
+        return new Response(JSON.stringify({ error: "Passwords do not match" }), {
             status: 400,
         });
     }
 
-    const existingUser = await prisma.user.findUnique({
-        where: { email },
-    });
-
-    if (existingUser) {
-        return new Response(JSON.stringify({ error: 'User already exists' }), {
-            status: 400,
-        });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await prisma.user.create({
-        data: {
-            email,
-            password: hashedPassword,
-            name,
+    // Регистрация пользователя через Supabase Auth
+    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+            data: {
+                name,
+            },
         },
     });
 
-    return new Response(JSON.stringify({ user: { id: user.id, email: user.email } }), {
-        status: 201,
-    });
+    // Обработка ошибки регистрации
+    if (signUpError) {
+        return new Response(JSON.stringify({ error: signUpError.message }), {
+            status: 400,
+        });
+    }
+
+    // Проверка успешного создания пользователя
+    const user = signUpData.user;
+    if (!user) {
+        return new Response(JSON.stringify({ error: "User registration failed" }), {
+            status: 500,
+        });
+    }
+
+    // Возвращаем данные о пользователе
+    return new Response(
+        JSON.stringify({
+            user: {
+                id: user.id,
+                email: user.email,
+                name: user.user_metadata.name,
+            },
+        }),
+        { status: 201 }
+    );
 }
